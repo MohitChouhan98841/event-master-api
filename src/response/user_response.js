@@ -7,5 +7,6 @@ export class UserResponse{
         this.profileImage=data.profileImage?data.profileImage:"";
         this.profileImage=data.profileImage?data.profileImage:"";
         this.userRole=data.userRole?data.userRole:"";
+        this.createdAt=data.createdAt?data.createdAt:null;
     }
 }
