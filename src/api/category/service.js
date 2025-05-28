@@ -1,15 +1,15 @@
 import categoryModel from "../../model/category.js"
 
 export const getCategryById=async (id)=>{
-  const cetegoryData = await categoryModel.findOne({
+  const categoryData = await categoryModel.findOne({
     _id:id
   })
-  return cetegoryData;
+  return categoryData;
 }
 
 export const getCategryList=async ()=>{
-  const cetegoryData = await categoryModel.find({
+  const categoryData = await categoryModel.find({
     isActive:true
   })
-  return cetegoryData;
+  return categoryData;
 }

@@ -8,8 +8,8 @@ export const create = async (req,res)=>{
         const cetegoryObj = new categoryModel({
             name:name.toLowerCase()
         })
-        const cetegoryData = await cetegoryObj.save();
-        if(!cetegoryData){
+        const categoryData = await cetegoryObj.save();
+        if(!categoryData){
             return res.status(500).send({
                 status: false,
                 message: "Faild to create category"
@@ -18,7 +18,7 @@ export const create = async (req,res)=>{
         return res.status(200).send({
             status: true,
             message: "category created successfully",
-            data:new CategoryResponse(cetegoryData)
+            data:new CategoryResponse(categoryData)
         })
     } catch (error) {
         return res.status(500).send({
@@ -31,19 +31,19 @@ export const create = async (req,res)=>{
 export const update = async (req,res)=>{
     try {
         const {name,id} = req.body;
-        const cetegoryData = await getCategryById(id);
-        if(!cetegoryData){
+        const categoryData = await getCategryById(id);
+        if(!categoryData){
             return res.status(500).send({
                 status: false,
                 message: "category not found"
             })
         }
-        cetegoryData.name= name.toLowerCase();
-        await cetegoryData.save()
+        categoryData.name= name.toLowerCase();
+        await categoryData.save()
         return res.status(200).send({
             status: true,
             message: "category update successfully",
-            data:new CategoryResponse(cetegoryData),
+            data:new CategoryResponse(categoryData),
         })
     } catch (error) {
         return res.status(500).send({
@@ -56,15 +56,15 @@ export const update = async (req,res)=>{
 export const remove = async (req,res)=>{
     try {
         const {id} = req.body;
-        const cetegoryData = await getCategryById(id);
-        if(!cetegoryData){
+        const categoryData = await getCategryById(id);
+        if(!categoryData){
             return res.status(500).send({
                 status: false,
                 message: "category not found"
             })
         }
-        cetegoryData.isActive=false;
-        await cetegoryData.save()
+        categoryData.isActive=false;
+        await categoryData.save()
         return res.status(200).send({
             status: true,
             message: "category remove successfully"
