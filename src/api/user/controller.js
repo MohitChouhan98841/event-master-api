@@ -3,6 +3,8 @@ import bcrypt from "bcrypt"
 import { getUserByEmail, getUserById } from "./service.js";
 import { UserResponse } from "../../response/user.js";
 import { getUserToken } from "../../helper/jwt_auth/jwt_helper.js";
+import { validationResult } from "express-validator";
+import { clubAllRequriedFeild } from "../../helper/validaction/validaction_helpwe.js";
 
 
 export const registerUser = async (req, res) => {
@@ -91,7 +93,7 @@ export const changePassword = async (req, res) => {
         if (!bcrypt.compareSync(oldPassword, userObj.password)) {
             return res.status(500).send({
                 status: false,
-                message: "Encorrect password old password"
+                message: "Encorrect old password"
             })
         }
 
