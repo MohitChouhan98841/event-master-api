@@ -2,11 +2,12 @@
 
 export class UserResponse{
     constructor(data){
-        this.userName=data.userName?data.userName:"";
-        this.email=data.email?data.email:"";
-        this.profileImage=data.profileImage?data.profileImage:"";
-        this.profileImage=data.profileImage?data.profileImage:"";
-        this.userRole=data.userRole?data.userRole:"";
-        this.createdAt=data.createdAt?data.createdAt:null;
+        this.id=data._id??"";
+        this.userName=data.userName??"";
+        this.email=data.email??"";
+        this.profileImage=data.profileImage??"";
+        this.profileImage=data.profileImage??"";
+        this.userRole=data.userRole??"";
+        this.createdAt=data.createdAt??"";
     }
 }
