@@ -13,7 +13,7 @@ export const registerUser = async (req, res) => {
         const emailLower = email.toLowerCase();
         const checkUser = await getUserByEmail(email)
         if (checkUser) {
-            return res.status(500).send({
+            return res.status(409).send({
                 status: false,
                 message: "Email already used"
             })
@@ -59,7 +59,7 @@ export const login = async (req, res) => {
             })
         }
         if (!bcrypt.compareSync(password, userObj.password)) {
-            return res.status(500).send({
+            return res.status(401).send({
                 status: false,
                 message: "Encorrect password"
             })
@@ -85,13 +85,13 @@ export const changePassword = async (req, res) => {
         const { oldPassword, password } = req.body;
         const userObj = await getUserById(req.user.user_id);
         if (!userObj) {
-            return res.status(500).send({
+            return res.status(404).send({
                 status: false,
                 message: "User not found"
             })
         }
         if (!bcrypt.compareSync(oldPassword, userObj.password)) {
-            return res.status(500).send({
+            return res.status(401).send({
                 status: false,
                 message: "Encorrect old password"
             })
