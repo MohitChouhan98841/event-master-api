@@ -1,7 +1,7 @@
 import userModel from "../../model/user.js"
 import bcrypt from "bcrypt"
 import { getUserByEmail, getUserById } from "./service.js";
-import { UserResponse } from "../../response/user.js";
+import { UserResponse } from "../../response/user_response.js";
 import { getUserToken } from "../../helper/jwt_auth/jwt_helper.js";
 import { validationResult } from "express-validator";
 import { clubAllRequriedFeild } from "../../helper/validaction/validaction_helpwe.js";
