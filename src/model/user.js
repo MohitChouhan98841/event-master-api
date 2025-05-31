@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { UserRole } from '../constants/app_constants.js';
 
 const Schema = mongoose.Schema;
 
@@ -8,9 +9,10 @@ const userSchema = Schema({
     password: { type: String, require: true },
     profileImage: { type: String },
     userRole: {
-        type: String,
-        enum: ['user', 'admin', 'moderator'],
-        default: 'user', // Default value for the 'role' field if not specified during document creation
+        type: Number,
+        default:UserRole.user,//user
+        // enum: ['user', 'admin', 'moderator'],
+        // default: 'user', // Default value for the 'role' field if not specified during document creation
         require: true
     },
 }, { timestamps: true }
