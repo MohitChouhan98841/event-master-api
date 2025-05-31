@@ -33,7 +33,7 @@ export const update = async (req,res)=>{
         const {name,id} = req.body;
         const categoryData = await getCategryById(id);
         if(!categoryData){
-            return res.status(500).send({
+            return res.status(404).send({
                 status: false,
                 message: "category not found"
             })
@@ -58,7 +58,7 @@ export const remove = async (req,res)=>{
         const {id} = req.body;
         const categoryData = await getCategryById(id);
         if(!categoryData){
-            return res.status(500).send({
+            return res.status(404).send({
                 status: false,
                 message: "category not found"
             })
@@ -81,7 +81,7 @@ export const list = async (req,res)=>{
     try {
         const categoryData = await getCategryList();
         if(!categoryData){
-            return res.status(500).send({
+            return res.status(404).send({
                 status: false,
                 message: "category not found"
             })
