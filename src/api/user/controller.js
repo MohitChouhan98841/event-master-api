@@ -1,12 +1,13 @@
 import userModel from "../../model/user.js"
 import bcrypt from "bcrypt"
 import { getUserByEmail, getUserById } from "./service.js";
-import { UserResponse } from "../../response/user.js";
+import { UserResponse } from "../../response/user_response.js";
 import { getUserToken } from "../../helper/jwt_auth/jwt_helper.js";
-import { validationResult } from "express-validator";
-import { clubAllRequriedFeild } from "../../helper/validaction/validaction_helpwe.js";
 
-
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const registerUser = async (req, res) => {
     try {
         const { userName, email, password } = req.body;
@@ -47,7 +48,10 @@ export const registerUser = async (req, res) => {
     }
 }
 
-
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -79,7 +83,10 @@ export const login = async (req, res) => {
         })
     }
 }
-
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const changePassword = async (req, res) => {
     try {
         const { oldPassword, password } = req.body;
@@ -112,7 +119,10 @@ export const changePassword = async (req, res) => {
 }
 
 
-
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 ///later on sed a token and it will help to reset password api
 export const forgetPassword = async (req, res) => {
     try {
