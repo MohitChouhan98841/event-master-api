@@ -2,6 +2,10 @@ import { CategoryResponse } from '../../response/category_response.js';
 import categoryModel from './../../model/category.js'
 import { getCategryById, getCategryList } from './service.js';
 
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const create = async (req,res)=>{
     try {
         const {name} = req.body;
@@ -28,6 +32,10 @@ export const create = async (req,res)=>{
     }
 } 
 
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const update = async (req,res)=>{
     try {
         const {name,id} = req.body;
@@ -53,9 +61,15 @@ export const update = async (req,res)=>{
     }
 } 
 
+
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const remove = async (req,res)=>{
     try {
-        const {id} = req.body;
+        // const {id} = req.body;
+        const id = req.query.id;
         const categoryData = await getCategryById(id);
         if(!categoryData){
             return res.status(404).send({
@@ -77,6 +91,11 @@ export const remove = async (req,res)=>{
     }
 } 
 
+
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export const list = async (req,res)=>{
     try {
         const categoryData = await getCategryList();

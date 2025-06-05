@@ -14,6 +14,6 @@ res.send("user route....")
 userRoute.post('/login',validator("userLoginValidaction"),errorMiddleware,login)
 userRoute.post('/register',validator("userRegisterValidaction"),errorMiddleware,registerUser)
 userRoute.post('/forgetPassword',validator("forgetPasswordValidaction"),errorMiddleware,forgetPassword)
-userRoute.post('/changePassword',authMiddleware,validator("changePasswordValidaction"),errorMiddleware,changePassword)
+userRoute.patch('/changePassword',authMiddleware,validator("changePasswordValidaction"),errorMiddleware,changePassword)
 
 export default userRoute;
